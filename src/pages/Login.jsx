@@ -39,7 +39,7 @@ const Login = ({ onLogin }) => {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <img src="/logo.png" alt="Stuckfit Logo" className="login-logo" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Stuckfit Logo" className="login-logo" />
           <h2>Admin Access</h2>
           <p>Sign in to manage your store</p>
         </div>

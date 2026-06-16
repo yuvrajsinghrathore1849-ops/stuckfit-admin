@@ -222,7 +222,7 @@ const AdminPanel = ({ onLogout }) => {
         <aside className="admin-sidebar">
           <div className="admin-profile">
             <div className="admin-logo-wrapper">
-              <img src="/logo.png" alt="Stuck Fit Logo" className="stuck-fit-admin-logo" />
+              <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Stuck Fit Logo" className="stuck-fit-admin-logo" />
             </div>
             <h3>Store Admin</h3>
             <p>Stuckfit Dashboard</p>

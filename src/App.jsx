@@ -7,7 +7,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => !!localStorage.getItem('adminAuth'));
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="App">
         <Routes>
           <Route 
