@@ -471,3 +471,103 @@ body {
   background-color: var(--color-secondary);
   color: var(--color-text-muted);
 }
+
+/* Responsive CSS for Mobile Devices */
+.revenue-breakdown-container {
+  display: flex;
+  gap: 3rem;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .admin-sidebar {
+    padding: 1.25rem;
+    align-self: stretch;
+  }
+
+  .admin-profile {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .stuck-fit-admin-logo {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
+  }
+
+  .admin-profile h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .admin-profile p {
+    font-size: 0.75rem;
+  }
+
+  .admin-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .nav-item {
+    flex-shrink: 0;
+    width: auto;
+    white-space: nowrap;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+    justify-content: center;
+  }
+
+  .nav-item:last-child {
+    margin-left: auto;
+  }
+
+  .nav-badge {
+    margin-left: 0.25rem;
+    padding: 0.1rem 0.35rem;
+    font-size: 0.7rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .admin-section-card {
+    padding: 1.25rem;
+  }
+
+  .tab-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tab-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .btn-add, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .revenue-breakdown-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

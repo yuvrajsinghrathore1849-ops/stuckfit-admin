@@ -439,7 +439,7 @@ const AdminPanel = ({ onLogout }) => {
               {/* Revenue Details Section */}
               <div className="admin-section-card" style={{marginBottom: '2rem'}}>
                 <h3 style={{marginBottom: '1.5rem', fontSize: '1.1rem', color: 'var(--color-primary)'}}>Revenue Breakdown</h3>
-                <div style={{display: 'flex', gap: '3rem'}}>
+                <div className="revenue-breakdown-container">
                   <div style={{flex: 1}}>
                     <p className="stat-label">Total Revenue Collected</p>
                     <h3 className="stat-value" style={{color: 'var(--color-primary)'}}>₹{orderList.filter(o => o.paymentStatus === 'Paid').reduce((acc, curr) => acc + curr.total, 0).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</h3>
