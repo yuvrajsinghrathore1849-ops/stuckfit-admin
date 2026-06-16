@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LayoutDashboard, Users, ShoppingBag, Settings, Plus, Trash2, Edit, TrendingUp, Package, DollarSign, LogOut, X, Save, MessageSquare, CheckCircle, Reply } from 'lucide-react';
 import axios from 'axios';
 import './AdminPanel.css';
+import { mockProducts, mockOrders, mockUsers, mockMessages } from '../data/mockData';
 
 const AdminPanel = ({ onLogout }) => {
   const [activeTab, setActiveTab] = useState('products');
@@ -42,7 +43,8 @@ const AdminPanel = ({ onLogout }) => {
       const data = await response.json();
       setProductList(data);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.warn('Error fetching products from API, falling back to mock data:', error);
+      setProductList(mockProducts);
     } finally {
       setIsLoading(false);
     }
@@ -54,7 +56,8 @@ const AdminPanel = ({ onLogout }) => {
       const data = await response.json();
       setOrderList(data);
     } catch (error) {
-      console.error('Error fetching orders:', error);
+      console.warn('Error fetching orders from API, falling back to mock data:', error);
+      setOrderList(mockOrders);
     }
   };
 
@@ -64,7 +67,8 @@ const AdminPanel = ({ onLogout }) => {
       const data = await response.json();
       setUserList(data);
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.warn('Error fetching users from API, falling back to mock data:', error);
+      setUserList(mockUsers);
     }
   };
 
@@ -74,7 +78,8 @@ const AdminPanel = ({ onLogout }) => {
       const data = await response.json();
       setMessageList(data);
     } catch (error) {
-      console.error('Error fetching messages:', error);
+      console.warn('Error fetching messages from API, falling back to mock data:', error);
+      setMessageList(mockMessages);
     }
   };
 
