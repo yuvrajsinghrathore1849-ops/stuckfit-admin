@@ -4,6 +4,8 @@ import axios from 'axios';
 import './AdminPanel.css';
 import { mockProducts, mockOrders, mockUsers, mockMessages } from '../data/mockData';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const AdminPanel = ({ onLogout }) => {
   const [activeTab, setActiveTab] = useState('products');
   const [productList, setProductList] = useState([]);
@@ -39,7 +41,7 @@ const AdminPanel = ({ onLogout }) => {
   const fetchProducts = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/api/products');
+      const response = await fetch(`${API_URL}/api/products`);
       const data = await response.json();
       setProductList(data);
     } catch (error) {
@@ -52,7 +54,7 @@ const AdminPanel = ({ onLogout }) => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/orders');
+      const response = await fetch(`${API_URL}/api/orders`);
       const data = await response.json();
       setOrderList(data);
     } catch (error) {
@@ -63,7 +65,7 @@ const AdminPanel = ({ onLogout }) => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/users');
+      const response = await fetch(`${API_URL}/api/users`);
       const data = await response.json();
       setUserList(data);
     } catch (error) {
@@ -74,7 +76,7 @@ const AdminPanel = ({ onLogout }) => {
 
   const fetchMessages = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/messages');
+      const response = await fetch(`${API_URL}/api/messages`);
       const data = await response.json();
       setMessageList(data);
     } catch (error) {
@@ -93,7 +95,7 @@ const AdminPanel = ({ onLogout }) => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/products/${id}`);
+        await axios.delete(`${API_URL}/api/products/${id}`);
         setProductList(productList.filter(p => p.id !== id));
       } catch (error) {
         console.warn('Error deleting product from API, deleting from local component state (Demo Mode):', error);
@@ -147,7 +149,7 @@ const AdminPanel = ({ onLogout }) => {
   const handleResolveMessage = async (id, currentStatus) => {
     if (currentStatus === 'Resolved') return;
     try {
-      await axios.put(`http://localhost:5000/api/messages/${id}`, { status: 'Resolved' });
+      await axios.put(`${API_URL}/api/messages/${id}`, { status: 'Resolved' });
       fetchMessages();
     } catch (error) {
       console.warn('Error resolving message from API, updating local state (Demo Mode):', error);
@@ -162,7 +164,7 @@ const AdminPanel = ({ onLogout }) => {
     }
     
     try {
-      await axios.put(`http://localhost:5000/api/messages/${id}`, { 
+      await axios.put(`${API_URL}/api/messages/${id}`, { 
         status: 'Replied', 
         reply: replyText 
       });
@@ -205,12 +207,12 @@ const AdminPanel = ({ onLogout }) => {
     try {
       if (editingId) {
         // Update existing
-        await axios.put(`http://localhost:5000/api/products/${editingId}`, payload, {
+        await axios.put(`${API_URL}/api/products/${editingId}`, payload, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       } else {
         // Create new
-        await axios.post(`http://localhost:5000/api/products`, payload, {
+        await axios.post(`${API_URL}/api/products`, payload, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       }
